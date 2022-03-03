@@ -1,0 +1,109 @@
+
+<!-- saved from url=(0375)https://production-gradescope-uploads.s3-us-west-2.amazonaws.com/uploads/text_file/file/261080385/gold.html?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIGIENPBVZV37ZJPA%2F20220303%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220303T225913Z&X-Amz-Expires=10800&X-Amz-SignedHeaders=host&X-Amz-Signature=016b690ab64352a6eb0272a4f49394ddcf1bc8c2bbbe1c0bff9d04459747b59f -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" href="./gold_files/vis.css" type="text/css">
+<script type="text/javascript" src="./gold_files/vis-network.min.js"> </script>
+</head><body><center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+
+
+
+<div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas width="1000" style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" height="1000"></canvas></div></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "eat food", "label": "eat food", "shape": "dot", "size": 10}, {"id": "drive home", "label": "drive home", "shape": "dot", "size": 10}, {"id": "clear trash", "label": "clear trash", "shape": "dot", "size": 10}, {"id": "choose restaurant", "label": "choose restaurant", "shape": "dot", "size": 10}, {"id": "walk or go into restaurant", "label": "walk or go into restaurant", "shape": "dot", "size": 10}, {"id": "drive to restaurant", "label": "drive to restaurant", "shape": "dot", "size": 10}, {"id": "choose menu item", "label": "choose menu item", "shape": "dot", "size": 10}, {"id": "place order", "label": "place order", "shape": "dot", "size": 10}, {"id": "wait in line", "label": "wait in line", "shape": "dot", "size": 10}, {"id": "pay for food", "label": "pay for food", "shape": "dot", "size": 10}, {"id": "read menu", "label": "read menu", "shape": "dot", "size": 10}, {"id": "get food", "label": "get food", "shape": "dot", "size": 10}, {"id": "find a table", "label": "find a table", "shape": "dot", "size": 10}, {"id": "sit down", "label": "sit down", "shape": "dot", "size": 10}, {"id": "take out wallet", "label": "take out wallet", "shape": "dot", "size": 10}, {"id": "wait for food", "label": "wait for food", "shape": "dot", "size": 10}, {"id": "drive to drive thru", "label": "drive to drive thru", "shape": "dot", "size": 10}, {"id": "leave restaurant", "label": "leave restaurant", "shape": "dot", "size": 10}, {"id": "drive to window", "label": "drive to window", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "eat food", "to": "drive home", "weight": 0.625}, {"arrows": "to", "from": "eat food", "to": "clear trash", "weight": 1.0}, {"arrows": "to", "from": "choose restaurant", "to": "walk or go into restaurant", "weight": 1.0}, {"arrows": "to", "from": "choose restaurant", "to": "drive to restaurant", "weight": 1.0}, {"arrows": "to", "from": "choose menu item", "to": "choose restaurant", "weight": 1.0}, {"arrows": "to", "from": "choose menu item", "to": "place order", "weight": 1.0}, {"arrows": "to", "from": "choose menu item", "to": "wait in line", "weight": 0.640625}, {"arrows": "to", "from": "choose menu item", "to": "pay for food", "weight": 1.0}, {"arrows": "to", "from": "read menu", "to": "choose menu item", "weight": 1.0}, {"arrows": "to", "from": "read menu", "to": "place order", "weight": 1.0}, {"arrows": "to", "from": "get food", "to": "eat food", "weight": 1.0}, {"arrows": "to", "from": "get food", "to": "find a table", "weight": 1.0}, {"arrows": "to", "from": "get food", "to": "sit down", "weight": 1.0}, {"arrows": "to", "from": "get food", "to": "drive home", "weight": 1.0}, {"arrows": "to", "from": "place order", "to": "take out wallet", "weight": 1.0}, {"arrows": "to", "from": "place order", "to": "pay for food", "weight": 1.0}, {"arrows": "to", "from": "walk or go into restaurant", "to": "choose menu item", "weight": 1.0}, {"arrows": "to", "from": "walk or go into restaurant", "to": "read menu", "weight": 1.0}, {"arrows": "to", "from": "walk or go into restaurant", "to": "place order", "weight": 1.0}, {"arrows": "to", "from": "walk or go into restaurant", "to": "wait in line", "weight": 1.0}, {"arrows": "to", "from": "wait in line", "to": "read menu", "weight": 0.5}, {"arrows": "to", "from": "wait in line", "to": "place order", "weight": 1.0}, {"arrows": "to", "from": "wait in line", "to": "choose menu item", "weight": 0.640625}, {"arrows": "to", "from": "wait in line", "to": "pay for food", "weight": 1.0}, {"arrows": "to", "from": "find a table", "to": "eat food", "weight": 1.0}, {"arrows": "to", "from": "find a table", "to": "place order", "weight": 0.5}, {"arrows": "to", "from": "find a table", "to": "sit down", "weight": 1.0}, {"arrows": "to", "from": "sit down", "to": "eat food", "weight": 1.0}, {"arrows": "to", "from": "sit down", "to": "place order", "weight": 0.5}, {"arrows": "to", "from": "take out wallet", "to": "choose restaurant", "weight": 0.5}, {"arrows": "to", "from": "take out wallet", "to": "choose menu item", "weight": 1.0}, {"arrows": "to", "from": "take out wallet", "to": "pay for food", "weight": 1.0}, {"arrows": "to", "from": "wait for food", "to": "eat food", "weight": 1.0}, {"arrows": "to", "from": "wait for food", "to": "get food", "weight": 1.0}, {"arrows": "to", "from": "wait for food", "to": "place order", "weight": 0.5}, {"arrows": "to", "from": "wait for food", "to": "find a table", "weight": 1.0}, {"arrows": "to", "from": "wait for food", "to": "sit down", "weight": 1.0}, {"arrows": "to", "from": "drive to restaurant", "to": "choose menu item", "weight": 0.5}, {"arrows": "to", "from": "drive to restaurant", "to": "read menu", "weight": 1.0}, {"arrows": "to", "from": "drive to restaurant", "to": "place order", "weight": 1.0}, {"arrows": "to", "from": "drive to restaurant", "to": "walk or go into restaurant", "weight": 1.0}, {"arrows": "to", "from": "drive to restaurant", "to": "wait in line", "weight": 1.0}, {"arrows": "to", "from": "drive to restaurant", "to": "drive to drive thru", "weight": 1.0}, {"arrows": "to", "from": "drive home", "to": "eat food", "weight": 0.625}, {"arrows": "to", "from": "pay for food", "to": "eat food", "weight": 1.0}, {"arrows": "to", "from": "pay for food", "to": "get food", "weight": 1.0}, {"arrows": "to", "from": "pay for food", "to": "wait for food", "weight": 1.0}, {"arrows": "to", "from": "pay for food", "to": "drive home", "weight": 1.0}, {"arrows": "to", "from": "clear trash", "to": "drive home", "weight": 1.0}, {"arrows": "to", "from": "clear trash", "to": "leave restaurant", "weight": 1.0}, {"arrows": "to", "from": "leave restaurant", "to": "get food", "weight": 0.5}, {"arrows": "to", "from": "drive to window", "to": "get food", "weight": 1.0}, {"arrows": "to", "from": "drive to window", "to": "pay for food", "weight": 0.5}, {"arrows": "to", "from": "drive to window", "to": "drive home", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "choose menu item", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "place order", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "find a table", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "sit down", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "eat food", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "read menu", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "clear trash", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "walk or go into restaurant", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "drive to restaurant", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "choose restaurant", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "wait in line", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "take out wallet", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "drive to drive thru", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "wait for food", "weight": 1}, {"arrows": "to", "from": "drive to window", "to": "leave restaurant", "weight": 1}, {"arrows": "to", "from": "drive to drive thru", "to": "choose menu item", "weight": 1.0}, {"arrows": "to", "from": "drive to drive thru", "to": "place order", "weight": 1.0}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+
+</body></html>

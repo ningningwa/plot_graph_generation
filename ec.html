@@ -1,0 +1,109 @@
+
+<!-- saved from url=(0373)https://production-gradescope-uploads.s3-us-west-2.amazonaws.com/uploads/text_file/file/261080465/ec.html?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIGIENPBVZV37ZJPA%2F20220303%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220303T225913Z&X-Amz-Expires=10800&X-Amz-SignedHeaders=host&X-Amz-Signature=e087ac6076e9d5223e1c83c60fdc92585b02cd6bddaf147a42c9c23480dbd04c -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" href="./ec_files/vis.css" type="text/css">
+<script type="text/javascript" src="./ec_files/vis-network.min.js"> </script>
+</head><body><center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+
+
+
+<div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas width="1000" style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" height="1000"></canvas></div></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": -1, "label": -1, "shape": "dot", "size": 10}, {"id": 2, "label": 2, "shape": "dot", "size": 10}, {"id": 0, "label": 0, "shape": "dot", "size": 10}, {"id": 4, "label": 4, "shape": "dot", "size": 10}, {"id": 1, "label": 1, "shape": "dot", "size": 10}, {"id": 3, "label": 3, "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": -1, "to": 2, "weight": 1}, {"arrows": "to", "from": 0, "to": 4, "weight": 1.0}, {"arrows": "to", "from": 0, "to": 1, "weight": 1.0}, {"arrows": "to", "from": 0, "to": 3, "weight": 1}, {"arrows": "to", "from": 0, "to": -1, "weight": 1}, {"arrows": "to", "from": 4, "to": 3, "weight": 1.0}, {"arrows": "to", "from": 4, "to": 1, "weight": 1}, {"arrows": "to", "from": 4, "to": -1, "weight": 1}, {"arrows": "to", "from": 3, "to": -1, "weight": 1.0}, {"arrows": "to", "from": 1, "to": 3, "weight": 1.0}, {"arrows": "to", "from": 1, "to": -1, "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+
+</body></html>
